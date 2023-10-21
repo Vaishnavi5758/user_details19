@@ -18,7 +18,7 @@ function onsubmit(e){
     e.preventDefault();
     
      
-    var user = {
+    var  user = {
         amount: amount.value ,
         description: description.value,
         category:category.value
@@ -38,6 +38,22 @@ function onsubmit(e){
   amount.value = '';
   description.value = '';
 }
+
+
+window.addEventListener("DOMContentLoaded",()=>{
+   
+    axios.get("https://crudcrud.com/api/27776cfaaf89452585b89847929eaf34/userData")
+    .then((response)=>{
+
+        for(var i=0;i<response.data.length;i++){
+        showNewUserOnScreen(response.data[i]);
+        }
+      //  console.log(response)
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
+})
 
 
  function showNewUserOnScreen(user){
